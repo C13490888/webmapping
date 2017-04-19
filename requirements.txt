@@ -6,6 +6,7 @@ Markdown
 packaging
 psycopg2
 pyparsing
+gunicorn
 six
 wheel
 pip
