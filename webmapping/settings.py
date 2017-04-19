@@ -83,7 +83,7 @@ DATABASES = {
         'NAME': 'geodjango',
         'USER': 'geo',
         'PASSWORD': 'password',
-        'HOST': 'localhost',
+        'HOST': 'geodjango.c488jbnhadqz.us-west-2.rds.amazonaws.com',
     },
 }
 
