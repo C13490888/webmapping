@@ -1,1 +1,1 @@
-web: gunicorn webmapping/wsgi.py
+web: python manage.py runserver $PORT
