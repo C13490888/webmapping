@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.gis',
     'webm_app',
+
 ]
 
 MIDDLEWARE = [
