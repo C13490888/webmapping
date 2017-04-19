@@ -25,7 +25,9 @@ SECRET_KEY = '2!gln5$%5upm#$flf&&8is&ln63xc_4n_z=qy*&teue0uq#v5s'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'webemapping.herokuapp.com'
+]
 
 
 # Application definition
@@ -55,6 +57,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'webmapping.urls'
+
+
 
 TEMPLATES = [
     {
