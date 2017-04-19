@@ -1,1 +1,1 @@
-web: python manage.py runserver $PORT
+web: gunicorn webm_app.wsgi --log-file --
