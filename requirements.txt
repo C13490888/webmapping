@@ -9,4 +9,3 @@ pyparsing
 six
 wheel
 pip
-pip3
