@@ -26,7 +26,8 @@ SECRET_KEY = '2!gln5$%5upm#$flf&&8is&ln63xc_4n_z=qy*&teue0uq#v5s'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'webemapping.herokuapp.com'
+    'webemapping.herokuapp.com',
+    '127.0.0.1'
 ]
 
 
@@ -34,7 +35,6 @@ ALLOWED_HOSTS = [
 
 INSTALLED_APPS = [
     'rest_framework',
-    'gunicorn',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,8 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.gis',
-    'webm_app',
-
+    'webm_app'
 ]
 
 MIDDLEWARE = [
@@ -89,7 +88,7 @@ DATABASES = {
         'NAME': 'geodjango',
         'USER': 'geo',
         'PASSWORD': 'password',
-        'HOST': 'geodjango.c488jbnhadqz.us-west-2.rds.amazonaws.com',
+        'HOST': 'geodjango.cxajxn8gye8z.us-west-2.rds.amazonaws.com'
     },
 }
 
