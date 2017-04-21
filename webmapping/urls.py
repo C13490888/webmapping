@@ -16,9 +16,12 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib.gis import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.conf import settings
+from django.views.generic.simple import redirect_to
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^favicon.ico$', redirect_to, {'url':settings.MEDIA_URL+'favicon.ico'})
 ]
 
 urlpatterns += staticfiles_urlpatterns()
