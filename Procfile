@@ -1,1 +1,1 @@
-web: gunicorn webmapping.wsgi --log-file - --timeout 60
+web: gunicorn webmapping.wsgi --log-level debug --timeout 30
