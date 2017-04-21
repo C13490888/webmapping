@@ -17,11 +17,11 @@ from django.conf.urls import url, include
 from django.contrib.gis import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf import settings
-from django.views.generic.simple import redirect_to
+from django.views.generic import RedirectView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^favicon.ico$', redirect_to, {'url':settings.MEDIA_URL+'favicon.ico'})
+    url(r'^favicon.ico$', RedirectView.as_view(url=settings.MEDIA_URL+'favicon.ico'))
 ]
 
 urlpatterns += staticfiles_urlpatterns()
