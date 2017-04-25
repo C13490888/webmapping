@@ -25,7 +25,9 @@ urlpatterns = [
     url(r'^favicon\.ico$', favicon_view),
     url(r'^machines/$', views.PndMachineView.as_view(), name='pndmachine-list'),
     url(r'^outlets/$', views.PndOutletView.as_view(), name='pndoutlet-list'),
-    url(r'^machines/(?P<pk>[\d]+)/$', views.AuthorInstanceView.as_view(), name='author-instance'),
+    url(r'^machines/(?P<pk>[\d]+)/$', views.PndMachineIdView.as_view(), name='pndmachine-instance'),
+    url(r'^outlets/(?P<pk>[\d]+)/$', views.PndOutletIdView.as_view(), name='pndoutlet-instance'),
+
 ]
 
 urlpatterns += staticfiles_urlpatterns()
