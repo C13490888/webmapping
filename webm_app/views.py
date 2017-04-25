@@ -18,8 +18,8 @@ class PndMachineIdView(generics.RetrieveAPIView):
 class PndMachineLocationView(generics.ListAPIView):
     queryset = models.PayAndDisplayMachine.objects.all()
     serializer_class = serializer.PayAndDisplayMachineSerializer
-    filter_backends = (filters.SearchFilter,)
-    search_fields = ('location')
+    filter_backends = (filters.SearchFilter)
+    search_fields = 'location'
 
 
 #class PndMachinePointView:
