@@ -9,7 +9,10 @@ class PndMachineView(generics.ListAPIView):
     serializer_class = serializer.PayAndDisplayMachineSerializer
     queryset = models.PayAndDisplayMachine.objects.all()
 
-#class PndMachineIdView(generics.RetrieveAPIView):
+class PndMachineIdView(generics.RetrieveAPIView):
+    model = models.PayAndDisplayMachine
+    serializer_class = serializer.PayAndDisplayMachineSerializer
+    queryset = models.PayAndDisplayMachine.objects.all()
 
 #class PndMachineLocationView:
 
@@ -20,7 +23,10 @@ class PndOutletView(generics.ListAPIView):
     serializer_class = serializer.PayAndDisplayOutletSerializer
     queryset = models.PayAndDisplayOutlet.objects.all()
 
-#class PndOutletIdView:
+class PndOutletIdView(generics.RetrieveAPIView):
+    model = models.PayAndDisplayOutlet
+    serializer_class = serializer.PayAndDisplayOutletSerializer
+    queryset = models.PayAndDisplayOutlet.objects.all()
 
 #class PndOutletLocationView:
 

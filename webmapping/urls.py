@@ -23,8 +23,9 @@ favicon_view = RedirectView.as_view(url='/static/favicon.ico', permanent=True)
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^favicon\.ico$', favicon_view),
-    url(r'^machine/$', views.PndMachineView.as_view(), name='pndmachine-list'),
-    url(r'^outlet/$', views.PndOutletView.as_view(), name='pndoutlet-list'),
+    url(r'^machines/$', views.PndMachineView.as_view(), name='pndmachine-list'),
+    url(r'^outlets/$', views.PndOutletView.as_view(), name='pndoutlet-list'),
+    url(r'^machines/(?P<pk>[\d]+)/$', views.AuthorInstanceView.as_view(), name='author-instance'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
