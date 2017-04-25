@@ -17,11 +17,14 @@ from django.conf.urls import url, include
 from django.contrib.gis import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.views.generic.base import RedirectView
+from webm_app import views
 
 favicon_view = RedirectView.as_view(url='/static/favicon.ico', permanent=True)
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^favicon\.ico$', favicon_view),
+    url(r'^machine/$', views.PndMachineView.as_view(), name='pndmachine-list'),
+    url(r'^outlet/$', views.PndOutletView.as_view(), name='pndoutlet-list'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
