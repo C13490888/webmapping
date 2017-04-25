@@ -27,7 +27,7 @@ urlpatterns = [
     url(r'^outlets/$', views.PndOutletView.as_view(), name='pndoutlet-list'),
     url(r'^machines/(?P<pk>[\d]+)/$', views.PndMachineIdView.as_view(), name='pndmachine-instance'),
     url(r'^outlets/(?P<pk>[\d]+)/$', views.PndOutletIdView.as_view(), name='pndoutlet-instance'),
-    url(r'^machines/location/(?P<location>[\w])/$', views.PndMachineLocationView.as_view(), name='pndmachine-list-location'),
+    url(r'^machines/location', views.PndMachineLocationView.as_view(), name='pndmachine-list-location'),
     #url(r'^outlets/location/(?P<location>[\w])/$', views.PndOutletLocationView.as_view(), name='pndoutlet-list-location'),
 
 ]

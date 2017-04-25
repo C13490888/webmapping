@@ -2,6 +2,7 @@ from django.shortcuts import render
 from rest_framework import generics
 from webm_app import models
 from webm_app import serializer
+from rest_framework import filters
 
 
 class PndMachineView(generics.ListAPIView):
@@ -15,12 +16,11 @@ class PndMachineIdView(generics.RetrieveAPIView):
     queryset = models.PayAndDisplayMachine.objects.all()
 
 class PndMachineLocationView(generics.ListAPIView):
-    model = models.PayAndDisplayMachine
+    queryset = models.PayAndDisplayMachine.objects.all()
     serializer_class = serializer.PayAndDisplayMachineSerializer
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('location')
 
-    def get_queryset(self):
-        location = self.kwargs('location')
-        return models.PayAndDisplayMachine.objects.filter(location__contains=location)
 
 #class PndMachinePointView:
 
