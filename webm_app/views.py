@@ -19,7 +19,7 @@ class PndMachineLocationView(generics.ListAPIView):
     queryset = models.PayAndDisplayMachine.objects.all()
     serializer_class = serializer.PayAndDisplayMachineSerializer
     filter_backends = (filters.SearchFilter,)
-    search_fields = ('location',)
+    search_fields = ('location','furtherloc',)
 
 #class PndMachinePointView:
 
@@ -33,12 +33,9 @@ class PndOutletIdView(generics.RetrieveAPIView):
     serializer_class = serializer.PayAndDisplayOutletSerializer
     queryset = models.PayAndDisplayOutlet.objects.all()
 
-'''class PndOutletLocationView(generics.ListAPIView):
-    model = models.PayAndDisplayOutlet
+class PndOutletLocationView(generics.ListAPIView):
+    queryset = models.PayAndDisplayOutlet.objects.all()
     serializer_class = serializer.PayAndDisplayOutletSerializer
-
-    def get_queryset(self):
-        location = self.kwargs('location')
-        return models.PayAndDisplayOutlet.objects.filter(location__contains=location)
-'''
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('address1', 'address2',)
 #class PndOutletPointView:
