@@ -3,6 +3,8 @@ from rest_framework import generics
 from webm_app import models
 from webm_app import serializer
 from rest_framework import filters
+from django.contrib.gis.geos import Point
+from django.contrib.gis.measure import Distance
 
 
 class PndMachineView(generics.ListAPIView):
@@ -21,7 +23,22 @@ class PndMachineLocationView(generics.ListAPIView):
     filter_backends = (filters.SearchFilter,)
     search_fields = ('location','furtherloc',)
 
-#class PndMachinePointView:
+class PndMachinePointView(generics.ListAPIView):
+    serializer = serializer.PayAndDisplayMachineSerializer
+    def get_queryset(self):
+        """
+        Optionally restricts the returned purchases to a given user,
+        by filtering against a `username` query parameter in the URL.
+        """
+        queryset = models.PayAndDisplayMachine.objects.all()
+        radius = self.request.query_params.get('radius', None)
+        latitude = self.request.query_params.get('latitude', None)
+        longitude = self.request.query_params.get('longitude', None)
+        point = Point(longitude,latitude)
+        if latitude and longitude is not None:
+            queryset = models.PayAndDisplayMachine.objects.filter(point__distance_lt=(point, Distance(km=radius)))
+        return queryset
+
 
 class PndOutletView(generics.ListAPIView):
     model = models.PayAndDisplayOutlet
@@ -38,4 +55,5 @@ class PndOutletLocationView(generics.ListAPIView):
     serializer_class = serializer.PayAndDisplayOutletSerializer
     filter_backends = (filters.SearchFilter,)
     search_fields = ('address1', 'address2',)
+
 #class PndOutletPointView:
