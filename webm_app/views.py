@@ -36,7 +36,7 @@ class PndMachinePointView(generics.ListAPIView):
         longitude = float(self.request.query_params.get('longitude', None))
         point = Point(longitude,latitude)
         if latitude and longitude is not None:
-            queryset = models.PayAndDisplayMachine.objects.filter(point__distance_lt=(point, Distance(km=radius)))
+            queryset = models.PayAndDisplayMachine.objects.filter(point__distance_lt=(point, radius))
         return queryset
 
 
