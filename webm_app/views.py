@@ -31,9 +31,9 @@ class PndMachinePointView(generics.ListAPIView):
         by filtering against a `username` query parameter in the URL.
         """
         queryset = models.PayAndDisplayMachine.objects.all()
-        radius = self.request.query_params.get('radius', None)
-        latitude = self.request.query_params.get('latitude', None)
-        longitude = self.request.query_params.get('longitude', None)
+        radius = int(self.request.query_params.get('radius', None))
+        latitude = float(self.request.query_params.get('latitude', None))
+        longitude = float(self.request.query_params.get('longitude', None))
         point = Point(longitude,latitude)
         if latitude and longitude is not None:
             queryset = models.PayAndDisplayMachine.objects.filter(point__distance_lt=(point, Distance(km=radius)))
