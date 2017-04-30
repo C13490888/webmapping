@@ -24,7 +24,7 @@ class PndMachineLocationView(generics.ListAPIView):
     search_fields = ('location','furtherloc',)
 
 class PndMachinePointView(generics.ListAPIView):
-    serializer = serializer.PayAndDisplayMachineSerializer
+    serializer_class = serializer.PayAndDisplayMachineSerializer
     def get_queryset(self):
         """
         Optionally restricts the returned purchases to a given user,
