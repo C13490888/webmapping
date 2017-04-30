@@ -29,7 +29,8 @@ urlpatterns = [
     url(r'^outlets/(?P<pk>[\d]+)/$', views.PndOutletIdView.as_view(), name='pndoutlet-instance'),
     url(r'^machines/location', views.PndMachineLocationView.as_view(), name='pndmachine-location'),
     url(r'^outlets/location', views.PndOutletLocationView.as_view(), name='pndoutlet-location'),
-    url(r'^machines/point', views.PndMachinePointView.as_view()),
+    url(r'^machines/point', views.PndMachinePointView.as_view(), name='pndmachine-nearme'),
+    url(r'^outlets/point', views.PndOutletPointView.as_view(), name='pndoutlet-nearme'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

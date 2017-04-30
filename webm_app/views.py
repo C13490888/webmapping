@@ -56,4 +56,19 @@ class PndOutletLocationView(generics.ListAPIView):
     filter_backends = (filters.SearchFilter,)
     search_fields = ('address1', 'address2',)
 
-#class PndOutletPointView:
+class PndOutletPointView:
+    serializer_class = serializer.PayAndDisplayOutletSerializer
+
+    def get_queryset(self):
+        """
+        Optionally restricts the returned purchases to a given user,
+        by filtering against a `username` query parameter in the URL.
+        """
+        queryset = models.PayAndDisplayOutlet.objects.all()
+        radius = int(self.request.query_params.get('radius', None))
+        latitude = float(self.request.query_params.get('latitude', None))
+        longitude = float(self.request.query_params.get('longitude', None))
+        point = Point(longitude, latitude)
+        if latitude and longitude is not None:
+            queryset = models.PayAndDisplayOutlet.objects.filter(point__distance_lt=(point, radius))
+        return queryset
