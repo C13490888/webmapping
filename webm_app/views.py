@@ -56,7 +56,7 @@ class PndOutletLocationView(generics.ListAPIView):
     filter_backends = (filters.SearchFilter,)
     search_fields = ('address1', 'address2',)
 
-class PndOutletPointView:
+class PndOutletPointView(generics.ListAPIView):
     serializer_class = serializer.PayAndDisplayOutletSerializer
 
     def get_queryset(self):
